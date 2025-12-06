@@ -49,28 +49,62 @@ const Login = () => {
         })
     }
     return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body">
-         <h1 className="text-5xl font-bold">Login now!</h1>
-        <form onSubmit={handleLogin} className="fieldset">     
-          <label className="label">Email</label>
-          <input type="email" name='email' ref={emailRef} className="input" placeholder="Email" />
-          <label className="label">Password</label>
-          <input type="password" name='password' className="input" placeholder="Password" />
-          <div onClick={handleForgetPassword}><a className="link link-hover">Forgot password?</a></div>
-          <button className="btn btn-neutral mt-4">Login</button>
-        </form>
-        {
-            <p>New to this website? <Link className='text-blue-600 underline' to='/SignUp'>SignUp</Link></p>
-        }
-        {
-            errorMessage && <p className='text-red-600'>{errorMessage}</p>
-        }
-        {
-            success && <p className='text-green-500'>User logged in Successfully</p>
-        }
-      </div>
-    </div>
+     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 via-indigo-950 to-purple-900 px-4">
+            <div className="card w-full max-w-sm shadow-2xl rounded-2xl bg-gray-900/80 backdrop-blur border border-indigo-700/40">
+                <div className="card-body">
+
+                    <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text mb-4">
+                        Login
+                    </h1>
+
+                    <form onSubmit={handleLogin} className="space-y-3">
+
+                        <label className="text-gray-300 font-semibold">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            ref={emailRef}
+                            className="input bg-gray-800 text-white border border-indigo-600/40 focus:border-purple-400 focus:ring-purple-500 placeholder-gray-500"
+                            placeholder="Enter your email"
+                        />
+
+                        <label className="text-gray-300 font-semibold">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            className="input bg-gray-800 text-white border border-indigo-600/40 focus:border-purple-400 focus:ring-purple-500 placeholder-gray-500"
+                            placeholder="Enter password"
+                        />
+
+                        <p
+                            onClick={handleForgetPassword}
+                            className="text-indigo-400 hover:text-purple-300 cursor-pointer text-sm font-medium mt-1"
+                        >
+                            Forgot password?
+                        </p>
+
+                        <button className="btn w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 mt-4 border-none shadow-lg shadow-indigo-900/40">
+                            Login
+                        </button>
+                    </form>
+
+                    <p className="text-sm text-gray-400 mt-3">
+                        New here?{" "}
+                        <Link className="text-indigo-400 hover:text-purple-300 underline" to="/SignUp">
+                            Sign Up
+                        </Link>
+                    </p>
+
+                    {errorMessage && (
+                        <p className="text-red-500 font-semibold mt-2">{errorMessage}</p>
+                    )}
+
+                    {success && (
+                        <p className="text-green-400 font-semibold mt-2">Login successful!</p>
+                    )}
+                </div>
+            </div>
+        </div>
     );
 };
 

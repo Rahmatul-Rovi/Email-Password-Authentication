@@ -47,47 +47,69 @@ const Signup = () => {
       });
   };
   return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body">
-        <h1 className="text-3xl font-bold">Please Sign Up now!</h1>
-        <form onSubmit={handleSignUp}>
-          <label className="label">Email</label>
-          <input
-            type="email"
-            name="email"
-            className="input"
-            placeholder="Email"
-          />
-          <label className="label mt-4">Password</label>
-          <div className="relative">
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 via-indigo-950 to-purple-900 px-4">
+      <div className="card w-full max-w-sm shadow-2xl rounded-2xl bg-gray-900/80 backdrop-blur border border-indigo-700/40">
+        <div className="card-body">
+
+          <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text mb-4">
+            SignUp
+          </h1>
+
+          <form onSubmit={handleSignUp} className="space-y-3">
+            <label className="text-gray-300 font-semibold">Email</label>
             <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              className="input"
-              placeholder="Password"
+              type="email"
+              name="email"
+              className="input bg-gray-800 text-white border border-indigo-600/40 
+              focus:border-purple-400 focus:ring-purple-500 placeholder-gray-500"
+              placeholder="Enter your email"
             />
-            <button
-              onClick={() => {
-                setShowPassword(!showPassword);
-              }}
-              className="btn btn-xs absolute top-2 right-6"
-            >
-              {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+
+            <label className="text-gray-300 font-semibold mt-3">Password</label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="input bg-gray-800 text-white border border-indigo-600/40 
+                focus:border-purple-400 focus:ring-purple-500 placeholder-gray-500"
+                placeholder="Create a password"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-3 right-4 text-purple-300 hover:text-purple-200"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+
+            <label className="flex items-center gap-2 text-gray-300 text-sm mt-2">
+              <input type="checkbox" name="terms" className="checkbox checkbox-primary" />
+              Accept terms & conditions
+            </label>
+
+            <button className="btn w-full bg-gradient-to-r from-indigo-600 to-purple-600 
+            hover:from-indigo-500 hover:to-purple-500 mt-4 border-none shadow-lg shadow-indigo-900/40">
+              Sign Up
             </button>
-          </div>
-          <div>
-            <a className="link link-hover">Forgot password?</a>
-          </div>
-          <label className="label mt-2">
-            <input type="checkbox" name="terms" className="checkbox" />
-            Accept terms & conditions
-          </label>
-          <br />
-          <button className="btn btn-neutral mt-4">Sign Up</button>
-        </form>
-        <p>Already have an account ? please <Link to='/login' className="text-blue-400 underline">Login</Link></p>
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-        {success && <p className="text-green-500">User created Successfully</p>}
+          </form>
+
+          <p className="text-gray-400 text-sm mt-3">
+            Already have an account?{" "}
+            <Link className="text-indigo-400 hover:text-purple-300 underline" to="/login">
+              Login
+            </Link>
+          </p>
+
+          {errorMessage && (
+            <p className="text-red-500 mt-2 font-semibold">{errorMessage}</p>
+          )}
+
+          {success && (
+            <p className="text-green-400 mt-2 font-semibold">Account created successfully!</p>
+          )}
+        </div>
       </div>
     </div>
   );
